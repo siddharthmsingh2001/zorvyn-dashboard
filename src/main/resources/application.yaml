@@ -28,6 +28,7 @@ logging:
       zorvyn:
         dashboard: TRACE
     root: WARN
+
 server:
     port: 8080
     servlet:
