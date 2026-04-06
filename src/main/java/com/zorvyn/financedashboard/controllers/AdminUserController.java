@@ -36,7 +36,7 @@ public class AdminUserController {
             @PathVariable UUID id,
             @RequestParam(name = "status") boolean status
     ){
-        UserDto user = userManagementService.updateStaffStatus(id, status);
+        UserDto user = userManagementService.updateUserStatus(id, status);
         String message = status ? "Staff account activated" : "Staff account deactivated";
         return ResponseEntity.status(HttpStatus.OK)
                 .body(APIResponse.ok(user, message));

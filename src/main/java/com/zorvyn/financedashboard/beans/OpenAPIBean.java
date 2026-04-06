@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
                 contact = @Contact(name = "Siddharth", email = "siddhartmsingh2001@gmail.com"),
                 license = @License(name = "Apache 2.0", url = "https://www.apache.org/licenses/LICENSE-2.0")
         ),
-        servers = @Server(url = "http://localhost:8080", description = "Local Dev Server")
+        servers = @Server(url = "http://localhost:8080/api", description = "Local Dev Server")
 )
 @SecurityScheme(
         name = "cookieAuth",
