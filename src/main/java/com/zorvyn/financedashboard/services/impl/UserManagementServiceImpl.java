@@ -4,6 +4,7 @@ import com.zorvyn.financedashboard.dtos.UserDto;
 import com.zorvyn.financedashboard.entities.User;
 import com.zorvyn.financedashboard.exception.ResponseStatus;
 import com.zorvyn.financedashboard.exception.custom.AuthException;
+import com.zorvyn.financedashboard.exception.custom.UserNotFoundException;
 import com.zorvyn.financedashboard.mapper.UserMapper;
 import com.zorvyn.financedashboard.repositories.RoleRepository;
 import com.zorvyn.financedashboard.repositories.UserRepository;
@@ -12,6 +13,7 @@ import com.zorvyn.financedashboard.services.UserManagementService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +33,7 @@ public class UserManagementServiceImpl implements UserManagementService {
     @Transactional
     public UserDto updateUserStatus(UUID id, boolean status) {
         User user = userRepository.findByIdAndIsDeletedFalse(id)
-                .orElseThrow(() -> new AuthException("User not found", ResponseStatus.USER_NOT_FOUND));
+                .orElseThrow(() -> new UserNotFoundException("User not found", ResponseStatus.USER_NOT_FOUND));
 
         user.setEnabled(status);
         user.setLocked(!status);
