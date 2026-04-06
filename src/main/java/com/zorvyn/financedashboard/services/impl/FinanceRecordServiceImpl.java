@@ -33,6 +33,13 @@ public class FinanceRecordServiceImpl implements FinanceRecordService {
     private final FinanceRecordMapper recordMapper;
 
     @Override
+    public List<FinanceRecordResponse> getRecentActivity(User user) {
+        return recordMapper.toResponseList(
+                recordRepository.findTop5ByUserAndIsDeletedFalseOrderByTransactionDateDesc(user)
+        );
+    }
+
+    @Override
     @Transactional
     public FinanceRecordResponse createRecord(FinanceRecordRequest request, User user) {
         FinanceRecord record = new FinanceRecord();

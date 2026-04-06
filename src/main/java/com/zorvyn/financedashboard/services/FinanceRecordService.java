@@ -13,6 +13,8 @@ import java.util.UUID;
 
 public interface FinanceRecordService {
 
+    List<FinanceRecordResponse> getRecentActivity(User user);
+
     FinanceRecordResponse createRecord(FinanceRecordRequest request, User user);
 
     List<FinanceRecordResponse> getFilteredRecords(User user, RecordType type, Integer categoryId, LocalDate start, LocalDate end);

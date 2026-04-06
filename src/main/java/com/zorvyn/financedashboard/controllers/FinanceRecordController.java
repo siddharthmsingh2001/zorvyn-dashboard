@@ -25,6 +25,14 @@ public class FinanceRecordController {
 
     private final FinanceRecordService recordService;
 
+    @GetMapping("/recent")
+    public ResponseEntity<APIResponse<List<FinanceRecordResponse>>> recentActivity(
+            @AuthenticationPrincipal UserPrincipal principal
+    ){
+        var response = recordService.getRecentActivity(principal.getUser());
+        return ResponseEntity.ok(APIResponse.created(response, "Recent activity fetched"));
+    }
+
     @PostMapping
     public ResponseEntity<APIResponse<FinanceRecordResponse>> create(
             @Valid @RequestBody FinanceRecordRequest request,

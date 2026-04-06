@@ -19,6 +19,8 @@ import java.util.UUID;
 @Repository
 public interface FinanceRecordRepository extends JpaRepository<FinanceRecord, UUID> , JpaSpecificationExecutor<FinanceRecord> {
 
+    List<FinanceRecord> findTop5ByUserAndIsDeletedFalseOrderByTransactionDateDesc(User user);
+
     @Modifying
     @Query("UPDATE FinanceRecord f SET f.category = :newCat " +
             "WHERE f.category = :oldCat AND f.user = :user AND f.isDeleted = false")
