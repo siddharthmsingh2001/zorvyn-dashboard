@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface UserManagementService {
 
-    UserDto updateStaffStatus(UUID id, boolean status);
+    UserDto updateUserStatus(UUID id, boolean status);
 
     List<UserDto> searchUser(String role, Boolean enabled, Boolean locked);
 }

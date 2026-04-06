@@ -28,7 +28,8 @@ public class UserManagementServiceImpl implements UserManagementService {
     private final UserMapper userMapper;
 
     @Override
-    public UserDto updateStaffStatus(UUID id, boolean status) {
+    @Transactional
+    public UserDto updateUserStatus(UUID id, boolean status) {
         User user = userRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new AuthException("User not found", ResponseStatus.USER_NOT_FOUND));
 

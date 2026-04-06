@@ -32,7 +32,7 @@ public class AdminUserController {
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<APIResponse<UserDto>> updateStaffStatus(
+    public ResponseEntity<APIResponse<UserDto>> updateUserStatus(
             @PathVariable UUID id,
             @RequestParam(name = "status") boolean status
     ){
