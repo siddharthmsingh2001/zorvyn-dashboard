@@ -50,10 +50,11 @@ public class DataInitializer implements CommandLineRunner {
     private Role createRoleIfNotFound(String name) {
         return roleRepository.findByName(name).orElseGet(() -> {
             Role role = new Role(name);
-            if (name.equals("ADMIN")) {
+            if (name.equals("ROLE_ADMIN")) {
                 role.setAuthorities(Set.of(
-                        new Authority("WRITE_PRIVILEGE"),
-                        new Authority("DELETE_PRIVILEGE")
+                        new Authority("RECORD_WRITE"),
+                        new Authority("RECORD_DELETE"),
+                        new Authority("USER_MANAGEMENT")
                 ));
             }
             return roleRepository.save(role);
