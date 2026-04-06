@@ -20,7 +20,7 @@ The **Zorvyn Finance Log** is a backend-driven financial management platform des
 ---
 
 ## 🛠️ Tech Stack
-* **Core:** Java 17, Spring Boot 3.2+
+* **Core:** Java 17, Spring Boot 4.0+
 * **Security:** Spring Security (Session-based RBAC)
 * **Persistence:** Spring Data JPA, MySQL 8.0, Hibernate
 * **Mapping:** MapStruct (Entity-to-DTO decoupling)
