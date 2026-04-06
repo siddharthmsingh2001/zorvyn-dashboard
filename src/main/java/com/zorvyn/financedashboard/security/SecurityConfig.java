@@ -92,10 +92,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "/api/records/**").hasAnyRole("VIEWER", "ANALYST", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/records/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/records/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/records/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/records/**").hasAnyRole("VIEWER", "ANALYST", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/records/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/records/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/records/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
