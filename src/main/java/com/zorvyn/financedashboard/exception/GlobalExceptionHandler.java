@@ -37,6 +37,17 @@ public class GlobalExceptionHandler {
                 ));
     }
 
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponseDto> handleUserNotFoundException(UserNotFoundException cause, WebRequest request){
+        return ResponseEntity
+                .status(cause.getResponseStatus().getStatusCode())
+                .body(new ErrorResponseDto(
+                        request.getDescription(false),
+                        cause.getResponseStatus(),
+                        cause.getMessage()
+                ));
+    }
+
     @ExceptionHandler(RoleNotFoundException.class)
     public ResponseEntity<ErrorResponseDto> handleRoleNotFoundException(RoleNotFoundException cause, WebRequest request){
         return ResponseEntity
